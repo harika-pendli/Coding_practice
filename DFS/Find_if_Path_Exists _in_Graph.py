@@ -11,7 +11,8 @@ class Solution(object):
         for edge in edges:
             adjacency_list[edge[0]].append(edge[1])
             adjacency_list[edge[1]].append(edge[0])
-            
+        
+        #can remove this function and integrate with validPath to reduce runtime
         
         def dfs(adjacency_list,source,destination):
             marked= [False]*n
