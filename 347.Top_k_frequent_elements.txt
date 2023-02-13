@@ -1,0 +1,22 @@
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        res= defaultdict(int)
+
+        for i in nums:
+            res[i]+=1
+        
+        res_ = [[]for i in range(len(nums)+1)]
+
+        for j,l in res.items():
+            res_[l].append(j)
+        l_=[]
+        for i in range(len(res_)-1,0,-1):
+            for n in res_[i]:
+                l_.append(n)
+                if (len(l_) == k): return l_
+        

@@ -1,0 +1,31 @@
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        
+        rows1 = []
+        for i in range(len(matrix)):
+            rows1.append([matrix[i][0],matrix[i][-1]])
+        
+        
+        L,R = 0 , len(matrix)-1
+        mid = (R+L)/2
+
+        while (L<=R):
+            if (target>rows1[mid][0]-1 and target<rows1[mid][1]+1):
+                if target in matrix[mid]:
+                    return True
+                return False
+            
+            elif (target < rows1[mid][0]):
+                R = mid-1
+            
+            elif (target > rows1[mid][1]):
+                L = mid+1
+ 
+
+            mid = (R+L)/2
+        return False

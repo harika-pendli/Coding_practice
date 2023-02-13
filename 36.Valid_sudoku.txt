@@ -1,0 +1,47 @@
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+      
+    
+        for row in board:
+            m=defaultdict(int)
+            for r in row:
+                if r==".": continue
+                m[r] = m[r]+1
+                if m[r]>1:
+                    print("FOund row",row)
+                    return False
+    
+
+          
+        
+        for i in range(9):
+            m=defaultdict(int)
+            for row in board:
+                print(row[i])
+                if row[i]=="." : continue
+                m[row[i]] = m[row[i]]+1
+                if m[row[i]]>1:
+                    print("FOund col",i)
+                    return False
+        
+        
+                    
+        
+        for p in range(0,7,3):
+            for q in range(0,7,3):
+                m = defaultdict(int)
+                for x in range(0,3):
+                    for y in range(0,3):
+                        if board[p+x][q+y]==".": continue
+
+                        m[board[p+x][q+y]] = 1+ m[board[p+x][q+y]]
+                        if m[board[p+x][q+y]] >1:
+                            return False
+        return True  
+        
+        
+

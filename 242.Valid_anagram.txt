@@ -1,0 +1,30 @@
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        """
+        if (len(s)!=len(t)): 
+            return False
+
+        s_,t_={},{}
+    
+        for i in range(len(s)):
+            s_[s[i]]=1+ s_.get(s[i],0)
+            t_[t[i]]=1+ t_.get(t[i],0)
+
+        for c in s_:
+            if (s_[c]!=t_.get(c,0)):
+                return False
+
+        return True
+        """
+        return sorted(s)==sorted(t)  
+        
+
+        
+        
+        
+        

@@ -1,0 +1,32 @@
+class Solution(object):
+    def characterReplacement(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        
+        count = defaultdict(int)
+        if len(s)==1:
+            return 1
+        if len(s)<k:
+            return len(s)
+        L,R = 0,0
+        res=0
+        
+        for R in range(len(s)):
+            
+            count[s[R]]+=1
+            mf = max(count.values())
+            if (R-L+1 -mf <= k) :
+                res = max(R-L+1,res)
+            else:
+                count[s[L]]-=1
+                L+=1
+
+            #print('L ',L)    
+            #print('R ',R)
+            #print('res ',res)
+            #print(count)
+
+        return res

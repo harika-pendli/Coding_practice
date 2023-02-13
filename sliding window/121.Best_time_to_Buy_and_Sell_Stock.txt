@@ -1,0 +1,23 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        
+        
+        if (len(prices)==1 or len(prices)==0):
+            return 0
+
+        L,R = 0 ,1
+        mp = 0
+        while(L<R and R< len(prices)):
+            if (prices[L]> prices[R]):
+                L=R
+                R= R+1
+                continue
+            mp = max(mp,prices[R]-prices[L])
+            R = R+1
+        
+        return mp
+            
